@@ -72,13 +72,15 @@ class Game:
 
         #Vẽ cầu thang
         for stair in self.stairs_positions:
-            row = int(stair["row"])  # Lấy giá trị từ dictionary
-            col = int(stair["col"]) 
+            row = (stair["row"])  # Lấy giá trị từ dictionary
+            col = (stair["col"]) 
 
             x = 215 + col * CELL_SIZE
             y = 80 + row * CELL_SIZE
 
-            self.stairs.add(Stair(x, y, stair["type"])) #Tạo cầu thang
+            #Chỉ vẽ cầu thang nếu nó nằm trong ma trận 7x7
+            if 0 <= row <= 6 and 0 <= col <= 6:
+                self.stairs.add(Stair(x, y, stair["type"])) #Tạo cầu thang
     
     def next_level(self):
         """Chuyển sang level tiếp theo"""
