@@ -2,7 +2,6 @@ import json
 import os
 def load_level(level_number):
     """Đọc dữ liệu level từ file JSON"""
-    import json
 
 def load_level(level_number):
     with open("levels.json", "r", encoding="utf-8") as file:
@@ -10,6 +9,14 @@ def load_level(level_number):
 
     for level in data["levels"]:
         if level["level"] == level_number:
-            return level["maze"], level["stairs"]
+            return (
+                level["maze"],
+                level["stairs"],
+                level.get("player_start", {"row": 0, "col": 0}),
+                level.get("mummies", []),
+                level.get("scorpions", []),
+                level.get("traps", []),
+                level.get("keys", [])
+            )
 
-    return None, None  # Trả về None nếu không tìm thấy level
+    return None, None, None, None, None, None, None

@@ -4,6 +4,7 @@ from constants import WIDTH, HEIGHT
 from sprites  import*
 from menu import Menu, transition
 from game import Game
+from levelcomplete import LevelComplete
 from audio_manager import AudioManager
 
 pygame.init()
@@ -20,6 +21,7 @@ audio_manager.play_background_music()
 #Tạo đối tượng Menu
 menu = Menu(SCREEN)
 game = Game(SCREEN, audio_manager)
+level_complete = LevelComplete(SCREEN)
 
 #Gọi hiệu ứng transition trước khi hiển thị menu
 transition(SCREEN, menu)
