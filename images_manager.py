@@ -1,45 +1,109 @@
 import pygame
 import os
+from constants import CELL_SIZE
 
-# Đường dẫn đến thư mục images
 BASE_PATH = os.path.join(os.path.dirname(__file__), "images")
 
 def load_images():
-    """Load tất cả hình ảnh từ thư mục images và các thư mục con"""
     images = {}
 
-    # Load hình ảnh cho Player
+    def split_sprite_sheet(sheet, frame_width, frame_count):
+        frames = []
+        for i in range(frame_count):
+            frame = sheet.subsurface((i * frame_width, 0, frame_width, sheet.get_height()))
+            frames.append(pygame.transform.scale(frame, (CELL_SIZE, CELL_SIZE)))
+        return frames
+    
+    # Load Player images
     player_path = os.path.join(BASE_PATH, "player")
     images["player"] = {}
-    for file_name in os.listdir(player_path):
-        if file_name.endswith(".png"):
-            # Ví dụ: file_name = "player_up.png" -> key = "up"
-            direction = file_name.replace("player_", "").replace(".png", "")
-            images["player"][direction] = pygame.image.load(os.path.join(player_path, file_name))
+    directions = ["up", "down", "left", "right"]
+    player_sprite_sheets = {
+        "up": "move_up.png",
+        "down": "move_down.png",
+        "left": "move_left.png",
+        "right": "move_right.png"
+    }
+    
+    if os.path.exists(player_path):
+        for direction in directions:
+            images["player"][direction] = []
+            file_name = player_sprite_sheets.get(direction, f"player_{direction}.png")
+            file_path = os.path.join(player_path, file_name)
+            try:
+                if os.path.exists(file_path):
+                    sprite_sheet = pygame.image.load(file_path)
+                    frames = split_sprite_sheet(sprite_sheet, sprite_sheet.get_width() // 5, 5)
+                    images["player"][direction].extend(frames)
+                else:
+                    print(f"Warning: Player sprite sheet {file_path} not found.")
+                    placeholder = pygame.Surface((CELL_SIZE, CELL_SIZE))
+                    placeholder.fill((0, 255, 0))
+                    images["player"][direction] = [placeholder] * 4
+            except pygame.error as e:
+                print(f"Error loading player sprite sheet {file_path}: {e}")
+                placeholder = pygame.Surface((CELL_SIZE, CELL_SIZE))
+                placeholder.fill((0, 255, 0))
+                images["player"][direction] = [placeholder] * 4
+    else:
+        print(f"Warning: Player image directory not found: {player_path}")
+        for direction in directions:
+            images["player"][direction] = [pygame.Surface((CELL_SIZE, CELL_SIZE)) for _ in range(4)]
+            for frame in images["player"][direction]:
+                frame.fill((0, 255, 0))
 
-    # Load hình ảnh cho Mummy
+    # Load Mummy images
     mummy_path = os.path.join(BASE_PATH, "mummy")
     images["mummy"] = {}
-    for file_name in os.listdir(mummy_path):
-        if file_name.endswith(".png"):
-            # Ví dụ: file_name = "mummy_white_up.png" -> key = "white_up"
-            key = file_name.replace("mummy_", "").replace(".png", "")
-            images["mummy"][key] = pygame.image.load(os.path.join(mummy_path, file_name))
+    colors = ["white", "red"]
+    mummy_sprite_sheets = {
+        "white_up": "whiteup.png",
+        "white_down": "whitedown.png",
+        "white_left": "whiteleft.png",
+        "white_right": "whiteright.png",
+        "red_up": "redup.png",
+        "red_down": "reddown.png",
+        "red_left": "redleft.png",
+        "red_right": "redright.png"
+    }
+    
+    if os.path.exists(mummy_path):
+        for color in colors:
+            for direction in directions:
+                key = f"{color}_{direction}"
+                images["mummy"][key] = []
+                file_name = mummy_sprite_sheets.get(key, f"{color}{direction}.png")
+                file_path = os.path.join(mummy_path, file_name)
+                try:
+                    if os.path.exists(file_path):
+                        sprite_sheet = pygame.image.load(file_path)
+                        frames = split_sprite_sheet(sprite_sheet, sprite_sheet.get_width() // 5, 5)
+                        images["mummy"][key].extend(frames)
+                    else:
+                        print(f"Warning: Mummy sprite sheet {file_path} not found.")
+                        placeholder = pygame.Surface((CELL_SIZE, CELL_SIZE))
+                        placeholder.fill((255, 165, 0))
+                        images["mummy"][key] = [placeholder] * 4
+                except pygame.error as e:
+                    print(f"Error loading mummy sprite sheet {file_path}: {e}")
+                    placeholder = pygame.Surface((CELL_SIZE, CELL_SIZE))
+                    placeholder.fill((255, 165, 0))
+                    images["mummy"][key] = [placeholder] * 4
+    else:
+        print(f"Error: Mummy image directory not found: {mummy_path}")
+        for color in colors:
+            for direction in directions:
+                key = f"{color}_{direction}"
+                images["mummy"][key] = [pygame.Surface((CELL_SIZE, CELL_SIZE)) for _ in range(4)]
+                for frame in images["mummy"][key]:
+                    frame.fill((255, 165, 0))
 
-    # Load hình ảnh cho Scorpion
-    scorpion_path = os.path.join(BASE_PATH, "scorpion")
-    images["scorpion"] = {}
-    for file_name in os.listdir(scorpion_path):
-        if file_name.endswith(".png"):
-            # Ví dụ: file_name = "scorpion_white_up.png" -> key = "white_up"
-            key = file_name.replace("scorpion_", "").replace(".png", "")
-            images["scorpion"][key] = pygame.image.load(os.path.join(scorpion_path, file_name))
-
-    # Load các hình ảnh khác (Trap, Key, Fence, v.v.)
+    # Load other images
     images["trap_skull"] = pygame.image.load(os.path.join(BASE_PATH, "trap_skull.png"))
     images["key"] = pygame.image.load(os.path.join(BASE_PATH, "key6.png"))
+    images["snake"] = pygame.image.load(os.path.join(BASE_PATH, "snake.png"))
+    images["game_over"] = pygame.image.load(os.path.join(BASE_PATH, "game_over.png"))
 
-    # Load hình ảnh giao diện
     images["backdrop"] = pygame.image.load(os.path.join(BASE_PATH, "backdrop.png"))
     images["floor"] = pygame.image.load(os.path.join(BASE_PATH, "floor.jpg"))
     images["mumlogo"] = pygame.image.load(os.path.join(BASE_PATH, "mumlogo.png"))
@@ -50,7 +114,6 @@ def load_images():
     images["stairs_top"] = pygame.image.load(os.path.join(BASE_PATH, "stairs_top.png"))
     images["stairs_bottom"] = pygame.image.load(os.path.join(BASE_PATH, "stairs_bottom.png"))
 
-    # Load hình ảnh menu
     images["menuback"] = pygame.image.load(os.path.join(BASE_PATH, "menuback.jpg"))
     images["menulogo"] = pygame.image.load(os.path.join(BASE_PATH, "menulogo.png"))
     images["menufront"] = pygame.image.load(os.path.join(BASE_PATH, "menufront.png"))

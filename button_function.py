@@ -1,6 +1,7 @@
 import pygame
 from audio_manager import*
-# Button functions
+
+"""Các hàm button"""
 def undo_move(audio_manager):
     """Hàm hủy di chuyển trước đó."""
     print("Undo Move clicked!")
@@ -10,7 +11,6 @@ def reset_maze(audio_manager):
     """Hàm reset mê cung."""
     print("Reset Maze clicked!")
     audio_manager.play_button_click()
-
 
 def show_world_map(world_map, audio_manager):
     """Hàm hiển thị bản đồ thế giới."""
@@ -23,7 +23,7 @@ def quit_to_main(audio_manager):
     print("Quit to Main clicked!")
     audio_manager.play_button_click()
 
-# Lớp Slider để điều chỉnh trong menu tùy chọn
+"""Lớp Slider để điều chỉnh trong menu tùy chọn"""
 class Slider:
     def __init__(self, x, y, width, value=50):
         self.rect = pygame.Rect(x, y, width, 10)  # Thanh trượt (dạng hình chữ nhật)
