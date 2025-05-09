@@ -54,7 +54,6 @@ class OptionsMenu:
         
         self.music_slider = Slider(270, 120, 250)
         self.sound_slider = Slider(270, 150, 250)
-        self.speed_slider = Slider(270, 180, 250)
         
         self.done_button = pygame.Rect(180, 377, 338, 35)
 
@@ -66,7 +65,6 @@ class OptionsMenu:
 
         self.music_slider.draw(screen)
         self.sound_slider.draw(screen)
-        self.speed_slider.draw(screen)
 
     def handle_event(self, event):
         if not self.active:
@@ -74,7 +72,6 @@ class OptionsMenu:
 
         self.music_slider.handle_event(event)
         self.sound_slider.handle_event(event)
-        self.speed_slider.handle_event(event)
 
         self.audio_manager.set_music_volume(self.music_slider.value)
         self.audio_manager.set_sfx_volume(self.sound_slider.value)

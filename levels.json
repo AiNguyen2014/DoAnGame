@@ -3,480 +3,146 @@
     {
       "level": 1,
       "maze": [
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, {}, { "walls": ["top", "left"] }, {}, {}, {}, {}],
-        [
-          {},
-          { "walls": ["left"] },
-          {},
-          {},
-          { "walls": ["top", "left"] },
-          {},
-          {}
-        ],
-        [{}, {}, {}, {}, {}, { "walls": ["top"] }, {}],
-        [
-          {},
-          { "walls": ["top", "right"] },
-          {},
-          {},
-          {},
-          { "walls": ["top", "left"] },
-          {}
-        ],
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, {}]
+        [{}, {}, {"walls": ["bottom"]}, {}, {}, {}],
+        [{}, {}, {}, {"walls": ["left"]}, {"walls": ["bottom"]}, {}],
+        [{}, {"walls": ["left"]}, {}, {}, {"walls": ["left"]}, {}],
+        [{}, {"walls": ["bottom"]}, {}, {}, {}, {"walls": ["bottom"]}],
+        [{}, {}, {"walls": ["left"]}, {}, {}, {"walls": ["left"]}],
+        [{}, {}, {}, {}, {}, {}]
       ],
-      "stairs": [{ "row": 3, "col": 6, "type": "S_r" }],
-      "player_start": { "row": 0, "col": 0 },
-      "mummies": [{ "row": 2, "col": 2, "color": "white" }],
-      "scorpions": [],
-      "traps": [{ "row": 1, "col": 3 }],
-      "keys": [{ "row": 4, "col": 4 }]
+      "stairs": [
+        {"row": 2, "col": 6, "type": "S_l"}
+      ],
+      "player_start": {"row": 1, "col": 0},
+      "mummies": [
+        {"row": 5, "col": 1, "color": "white"}
+      ],
+      "traps": []
     },
     {
       "level": 2,
       "maze": [
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, { "walls": ["left"] }, {}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, {}],
-        [
-          { "walls": ["bottom", "right"] },
-          {},
-          {},
-          {},
-          { "walls": ["bottom"] },
-          {},
-          {}
-        ],
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, {}]
+        [{}, {"walls": ["left", "bottom"]}, {}, {"walls": ["bottom"]}, {}, {}],
+        [{"walls": ["top"]}, {}, {"walls": ["left", "bottom"]}, {}, {"walls": ["left"]}, {}],
+        [{}, {"walls": ["left"]}, {"walls": ["top"]}, {"walls": ["bottom"]}, {}, {}],
+        [{"walls": ["bottom"]}, {}, {"walls": ["left"]}, {}, {"walls": ["left"]}, {}],
+        [{"walls": ["top"]}, {}, {}, {"walls": ["left"]}, {}, {}],
+        [{}, {}, {}, {}, {}, {}]
       ],
-      "stairs": [{ "row": 6, "col": 0, "type": "S_l" }],
-      "player_start": { "row": 0, "col": 0 },
-      "mummies": [{ "row": 3, "col": 2, "color": "white" }],
-      "scorpions": [{ "row": 4, "col": 3, "color": "red" }],
-      "traps": [{ "row": 2, "col": 5 }],
-      "keys": []
+      "stairs": [
+        {"row": 5, "col": 6, "type": "S_r"}
+      ],
+      "player_start": {"row": 4, "col": 2},
+      "mummies": [
+        {"row": 1, "col": 3, "color": "white"}
+      ],
+      "traps": []
     },
     {
       "level": 3,
       "maze": [
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, {}, {}, { "walls": ["left"] }, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, {}]
+        [{}, {"walls": ["bottom"]}, {}, {"walls": ["bottom"]}, {}, {}],
+        [{"walls": ["top"]}, {}, {"walls": ["left"]}, {}, {"walls": ["left"]}, {}],
+        [{}, {"walls": ["left", "bottom"]}, {}, {"walls": ["bottom"]}, {}, {}],
+        [{"walls": ["top"]}, {}, {"walls": ["left"]}, {}, {"walls": ["left"]}, {}],
+        [{}, {"walls": ["bottom"]}, {}, {"walls": ["bottom"]}, {}, {}],
+        [{}, {}, {}, {}, {}, {}]
       ],
-      "stairs": [{ "row": 0, "col": 3, "type": "S_t" }],
-      "player_start": { "row": 6, "col": 6 },
+      "stairs": [
+        {"row": 0, "col": 6, "type": "S_r"}
+      ],
+      "player_start": {"row": 1, "col": 1},
       "mummies": [
-        { "row": 2, "col": 2, "color": "white" },
-        { "row": 4, "col": 4, "color": "white" }
+        {"row": 4, "col": 1, "color": "white"}
       ],
-      "scorpions": [{ "row": 3, "col": 3, "color": "white" }],
-      "traps": [],
-      "keys": [{ "row": 5, "col": 5 }]
+      "traps": [
+        {"row": 2, "col": 3},
+        {"row": 4, "col": 3}
+      ]
     },
     {
       "level": 4,
       "maze": [
-        [{ "walls": ["right"] }, {}, {}, {}, {}, {}, {}],
-        [{}, { "walls": ["left", "bottom"] }, {}, {}, {}, {}, {}],
-        [{}, {}, {}, { "walls": ["top", "right"] }, {}, {}, {}],
-        [{}, {}, {}, {}, {}, { "walls": ["left"] }, {}],
-        [{}, {}, { "walls": ["bottom"] }, {}, {}, {}, {}],
-        [{}, {}, {}, {}, {}, {}, { "walls": ["top"] }],
-        [{}, {}, {}, {}, {}, {}, {}]
+        [{},{},{},{},{},{}],
+        [{},{},{ "walls": ["top", "left"] },{ "walls": ["right"] },{},{}],
+        [{}, {}, { "walls": ["bottom"] }, {}, { "walls": ["left"] }, {}],
+        [{}, {}, {}, {}, {}, {}],
+        [{}, {}, { "walls": ["right"] }, {}, {}, { "walls": ["top"] }],
+        [{}, {}, {}, { "walls": ["right"] }, {}, { "walls": ["left"] }]
       ],
-      "stairs": [{ "row": 6, "col": 6, "type": "S_r" }],
-      "player_start": { "row": 0, "col": 0 },
-      "mummies": [{ "row": 3, "col": 3, "color": "white" }],
-      "scorpions": [{ "row": 2, "col": 5, "color": "red" }],
-      "traps": [{ "row": 4, "col": 4 }],
-      "keys": [{ "row": 5, "col": 5 }]
+      "stairs": [{ "row": 6, "col": 0, "type": "S_t" }],
+      "player_start": { "row": 3, "col": 1 },
+      "mummies": [
+        { "row": 0, "col": 2, "color": "white" },
+        { "row": 2, "col": 4, "color": "red" },
+        {"row": 0, "col": 0, "color": "white" }
+      ],
+      "traps": [
+        { "row": 2, "col": 5 },
+        { "row": 4, "col": 3 }
+      ]
     },
     {
       "level": 5,
       "maze": [
-        [{}, { "walls": ["right"] }, {}, {}, {}, {}, {}],
-        [{ "walls": ["bottom"] }, {}, {}, {}, { "walls": ["left"] }, {}, {}],
-        [{}, {}, { "walls": ["top", "right"] }, {}, {}, {}, {}],
-        [{}, { "walls": ["left"] }, {}, {}, {}, { "walls": ["bottom"] }, {}],
-        [{}, {}, {}, { "walls": ["right"] }, {}, {}, {}],
-        [{}, {}, {}, {}, {}, { "walls": ["top", "left"] }, {}],
-        [{}, {}, {}, {}, {}, {}, {}]
+        [{},{},{},{},{},{}],
+        [{},{},{ "walls": ["top", "left"] },{ "walls": ["top", "right"] },{ },{}],
+        [{}, { "walls": ["top", "left"] }, {}, {}, {}, { "walls": ["top"] }],
+        [{}, {  "walls": ["bottom", "right"] }, {}, { "walls": ["top"] }, {}, {}],
+        [{}, { "walls": ["right"] }, { "walls": ["right"] }, {}, { "walls": ["top"] }, {}],
+        [{}, {}, { "walls": ["top"] }, { "walls": ["right", "top"] }, {}, {}]
       ],
-      "stairs": [{ "row": 0, "col": 6, "type": "S_t" }],
-      "player_start": { "row": 6, "col": 0 },
+      "stairs": [{ "row": 0, "col": 6, "type": "S_r" }],
+      "player_start": { "row": 5, "col": 3 },
       "mummies": [
-        { "row": 2, "col": 2, "color": "white" },
-        { "row": 4, "col": 4, "color": "red" }
+        { "row": 3, "col": 4, "color": "red" },
+        { "row": 0, "col": 4, "color": "red" }
       ],
-      "scorpions": [],
-      "traps": [{ "row": 3, "col": 5 }],
-      "keys": [{ "row": 1, "col": 3 }]
-    },
+      "traps": [{ "row": 3, "col": 3 }]
+    }, 
     {
       "level": 6,
       "maze": [
-        [{ "walls": ["right", "bottom"] }, {}, {}, {}, {}, {}, {}],
-        [
-          {},
-          { "walls": ["left", "top"] },
-          {},
-          { "walls": ["right"] },
-          {},
-          {},
-          {}
-        ],
-        [{}, {}, {}, {}, { "walls": ["bottom"] }, {}, {}],
-        [{}, { "walls": ["right"] }, {}, {}, {}, { "walls": ["left"] }, {}],
-        [{}, {}, { "walls": ["top"] }, {}, {}, {}, {}],
-        [{}, {}, {}, {}, { "walls": ["right"] }, {}, {}],
-        [{}, {}, {}, {}, {}, {}, { "walls": ["top"] }]
+        [{}, {"walls": ["bottom"]}, {}, {"walls": ["bottom"]}, {}, {}],
+        [{"walls": ["top"]}, {}, {"walls": ["left", "bottom"]}, {}, {"walls": ["left"]}, {}],
+        [{}, {"walls": ["left"]}, {"walls": ["top"]}, {"walls": ["bottom"]}, {}, {}],
+        [{"walls": ["bottom"]}, {}, {"walls": ["left"]}, {}, {"walls": ["left", "bottom"]}, {}],
+        [{"walls": ["top"]}, {"walls": ["left"]}, {}, {"walls": ["left", "top"]}, {}, {}],
+        [{}, {}, {"walls": ["bottom"]}, {}, {}, {}]
       ],
-      "stairs": [{ "row": 6, "col": 0, "type": "S_l" }],
-      "player_start": { "row": 0, "col": 0 },
+      "stairs": [
+        {"row": 2, "col": 6, "type": "S_r"}
+      ],
+      "player_start": {"row": 0, "col": 0},
       "mummies": [
-        { "row": 2, "col": 3, "color": "white" },
-        { "row": 5, "col": 2, "color": "red" }
+        {"row": 2, "col": 3, "color": "white"},
+        {"row": 4, "col": 2, "color": "red"},
+        {"row": 2, "col": 5, "color": "white"}
       ],
-      "scorpions": [{ "row": 4, "col": 4, "color": "white" }],
-      "traps": [{ "row": 3, "col": 2 }],
-      "keys": []
+      "traps": [
+        {"row": 2, "col": 4},
+        {"row": 3, "col": 4},
+        {"row": 4, "col": 3}
+      ]
     },
     {
       "level": 7,
       "maze": [
-        [{ "walls": ["right"] }, {}, { "walls": ["bottom"] }, {}, {}, {}, {}],
-        [
-          {},
-          { "walls": ["left", "top"] },
-          {},
-          {},
-          { "walls": ["right"] },
-          {},
-          {}
-        ],
-        [{}, {}, {}, { "walls": ["bottom"] }, {}, {}, {}],
-        [{}, { "walls": ["right"] }, {}, {}, { "walls": ["left"] }, {}, {}],
-        [{}, {}, { "walls": ["top", "right"] }, {}, {}, {}, {}],
-        [{}, {}, {}, {}, { "walls": ["bottom"] }, {}, {}],
-        [{}, {}, {}, {}, {}, { "walls": ["top", "left"] }, {}]
+        [{}, {"walls": ["left"]}, {"walls": ["left", "bottom"]}, {}, {}, {}],
+        [{}, {"walls": ["left"]}, {"walls": ["right","bottom"]}, {}, {"walls": ["left"]}, {"walls": ["top"]}],
+        [{}, {"walls": ["left", "bottom"]}, {}, {}, {}, {"walls": ["left", "bottom"]}],
+        [{}, {}, {"walls": ["bottom"]}, {"walls": ["right"]}, {}, {"walls": ["left"]}],
+        [{}, {"walls": ["bottom"]}, {}, {"walls": ["bottom","right"]}, {}, {}],
+        [{}, {}, {}, {}, {}, {}]
       ],
-      "stairs": [{ "row": 0, "col": 6, "type": "S_t" }],
-      "player_start": { "row": 6, "col": 0 },
+      "stairs": [
+        {"row": 3, "col": 6, "type": "S_r"}
+      ],
+      "player_start": {"row": 2, "col": 2},
       "mummies": [
-        { "row": 2, "col": 2, "color": "white" },
-        { "row": 4, "col": 4, "color": "red" },
-        { "row": 3, "col": 5, "color": "white" }
+        {"row": 4, "col": 5, "color": "white"}
       ],
-      "scorpions": [],
-      "traps": [
-        { "row": 1, "col": 3 },
-        { "row": 5, "col": 3 }
-      ],
-      "keys": [{ "row": 2, "col": 6 }]
-    },
-    {
-      "level": 8,
-      "maze": [
-        [{ "walls": ["bottom", "right"] }, {}, {}, {}, {}, {}, {}],
-        [
-          {},
-          { "walls": ["top", "left"] },
-          {},
-          { "walls": ["right"] },
-          {},
-          {},
-          {}
-        ],
-        [{}, {}, { "walls": ["bottom"] }, {}, { "walls": ["left"] }, {}, {}],
-        [{}, { "walls": ["right"] }, {}, {}, {}, { "walls": ["top"] }, {}],
-        [{}, {}, {}, { "walls": ["right"] }, {}, {}, {}],
-        [{}, {}, { "walls": ["top"] }, {}, {}, { "walls": ["left"] }, {}],
-        [{}, {}, {}, {}, {}, {}, { "walls": ["top"] }]
-      ],
-      "stairs": [{ "row": 6, "col": 6, "type": "S_r" }],
-      "player_start": { "row": 0, "col": 0 },
-      "mummies": [
-        { "row": 3, "col": 3, "color": "white" },
-        { "row": 5, "col": 2, "color": "red" }
-      ],
-      "scorpions": [
-        { "row": 2, "col": 4, "color": "white" },
-        { "row": 4, "col": 5, "color": "red" }
-      ],
-      "traps": [{ "row": 1, "col": 5 }],
-      "keys": [{ "row": 3, "col": 6 }]
-    },
-    {
-      "level": 9,
-      "maze": [
-        [{ "walls": ["right", "bottom"] }, {}, {}, {}, {}, {}, {}],
-        [
-          {},
-          { "walls": ["left", "top"] },
-          { "walls": ["right"] },
-          {},
-          {},
-          {},
-          {}
-        ],
-        [{}, {}, {}, { "walls": ["bottom"] }, {}, { "walls": ["left"] }, {}],
-        [{}, { "walls": ["right"] }, {}, {}, { "walls": ["top"] }, {}, {}],
-        [{}, {}, { "walls": ["right"] }, {}, {}, {}, {}],
-        [{}, {}, {}, { "walls": ["top"] }, {}, { "walls": ["left"] }, {}],
-        [{}, {}, {}, {}, {}, {}, { "walls": ["top", "right"] }]
-      ],
-      "stairs": [{ "row": 0, "col": 0, "type": "S_t" }],
-      "player_start": { "row": 6, "col": 6 },
-      "mummies": [
-        { "row": 2, "col": 2, "color": "white" },
-        { "row": 4, "col": 4, "color": "red" },
-        { "row": 3, "col": 5, "color": "white" }
-      ],
-      "scorpions": [{ "row": 1, "col": 3, "color": "red" }],
-      "traps": [
-        { "row": 2, "col": 4 },
-        { "row": 5, "col": 2 }
-      ],
-      "keys": []
-    },
-    {
-      "level": 10,
-      "maze": [
-        [{ "walls": ["bottom"] }, {}, { "walls": ["right"] }, {}, {}, {}, {}],
-        [
-          {},
-          { "walls": ["top", "left"] },
-          {},
-          { "walls": ["bottom"] },
-          {},
-          {},
-          {}
-        ],
-        [{}, {}, { "walls": ["right"] }, {}, { "walls": ["left"] }, {}, {}],
-        [{}, { "walls": ["top"] }, {}, {}, {}, { "walls": ["right"] }, {}],
-        [{}, {}, { "walls": ["bottom"] }, {}, {}, {}, {}],
-        [
-          {},
-          {},
-          {},
-          { "walls": ["right"] },
-          {},
-          { "walls": ["top", "left"] },
-          {}
-        ],
-        [{}, {}, {}, {}, {}, {}, { "walls": ["top"] }]
-      ],
-      "stairs": [{ "row": 6, "col": 0, "type": "S_l" }],
-      "player_start": { "row": 0, "col": 0 },
-      "mummies": [
-        { "row": 2, "col": 3, "color": "white" },
-        { "row": 4, "col": 2, "color": "red" },
-        { "row": 5, "col": 5, "color": "white" }
-      ],
-      "scorpions": [
-        { "row": 3, "col": 4, "color": "red" },
-        { "row": 1, "col": 2, "color": "white" }
-      ],
-      "traps": [{ "row": 2, "col": 5 }],
-      "keys": [{ "row": 4, "col": 6 }]
-    },
-    {
-      "level": 11,
-      "maze": [
-        [
-          { "walls": ["right", "bottom"] },
-          {},
-          {},
-          {},
-          { "walls": ["top"] },
-          {},
-          {}
-        ],
-        [
-          {},
-          { "walls": ["top", "left"] },
-          { "walls": ["right"] },
-          {},
-          {},
-          {},
-          {}
-        ],
-        [{}, {}, {}, { "walls": ["bottom"] }, {}, { "walls": ["left"] }, {}],
-        [{}, { "walls": ["right"] }, {}, {}, { "walls": ["top"] }, {}, {}],
-        [{}, {}, { "walls": ["right"] }, {}, {}, {}, {}],
-        [{}, {}, {}, { "walls": ["top"] }, {}, { "walls": ["left"] }, {}],
-        [{}, {}, {}, {}, { "walls": ["right"] }, {}, { "walls": ["top"] }]
-      ],
-      "stairs": [{ "row": 0, "col": 6, "type": "S_t" }],
-      "player_start": { "row": 6, "col": 0 },
-      "mummies": [
-        { "row": 2, "col": 2, "color": "white" },
-        { "row": 3, "col": 4, "color": "red" },
-        { "row": 5, "col": 3, "color": "white" }
-      ],
-      "scorpions": [
-        { "row": 1, "col": 5, "color": "red" },
-        { "row": 4, "col": 2, "color": "white" }
-      ],
-      "traps": [
-        { "row": 2, "col": 3 },
-        { "row": 4, "col": 5 }
-      ],
-      "keys": [{ "row": 3, "col": 6 }]
-    },
-    {
-      "level": 12,
-      "maze": [
-        [
-          { "walls": ["bottom", "right"] },
-          {},
-          { "walls": ["top"] },
-          {},
-          {},
-          {},
-          {}
-        ],
-        [
-          {},
-          { "walls": ["left", "top"] },
-          {},
-          { "walls": ["right"] },
-          {},
-          {},
-          {}
-        ],
-        [{}, {}, { "walls": ["bottom"] }, {}, { "walls": ["left"] }, {}, {}],
-        [{}, { "walls": ["right"] }, {}, {}, { "walls": ["top"] }, {}, {}],
-        [{}, {}, { "walls": ["right"] }, {}, {}, { "walls": ["top"] }, {}],
-        [{}, {}, {}, { "walls": ["right"] }, {}, { "walls": ["left"] }, {}],
-        [{}, {}, {}, {}, { "walls": ["top"] }, {}, { "walls": ["right"] }]
-      ],
-      "stairs": [{ "row": 6, "col": 6, "type": "S_r" }],
-      "player_start": { "row": 0, "col": 0 },
-      "mummies": [
-        { "row": 2, "col": 3, "color": "white" },
-        { "row": 4, "col": 2, "color": "red" },
-        { "row": 5, "col": 5, "color": "white" },
-        { "row": 3, "col": 4, "color": "red" }
-      ],
-      "scorpions": [{ "row": 1, "col": 2, "color": "white" }],
-      "traps": [
-        { "row": 2, "col": 5 },
-        { "row": 4, "col": 3 }
-      ],
-      "keys": []
-    },
-    {
-      "level": 13,
-      "maze": [
-        [
-          { "walls": ["right", "bottom"] },
-          {},
-          { "walls": ["top"] },
-          {},
-          {},
-          {},
-          {}
-        ],
-        [
-          {},
-          { "walls": ["left", "top"] },
-          { "walls": ["right"] },
-          {},
-          {},
-          {},
-          {}
-        ],
-        [{}, {}, { "walls": ["bottom"] }, {}, { "walls": ["left"] }, {}, {}],
-        [{}, { "walls": ["right"] }, {}, { "walls": ["top"] }, {}, {}, {}],
-        [{}, {}, { "walls": ["right"] }, {}, { "walls": ["top"] }, {}, {}],
-        [{}, {}, {}, { "walls": ["right"] }, {}, { "walls": ["left"] }, {}],
-        [{}, {}, {}, {}, { "walls": ["top", "right"] }, {}, {}]
-      ],
-      "stairs": [{ "row": 0, "col": 0, "type": "S_t" }],
-      "player_start": { "row": 6, "col": 6 },
-      "mummies": [
-        { "row": 2, "col": 2, "color": "white" },
-        { "row": 3, "col": 4, "color": "red" },
-        { "row": 5, "col": 3, "color": "white" },
-        { "row": 1, "col": 5, "color": "red" }
-      ],
-      "scorpions": [
-        { "row": 4, "col": 2, "color": "white" },
-        { "row": 2, "col": 5, "color": "red" }
-      ],
-      "traps": [{ "row": 3, "col": 3 }],
-      "keys": [{ "row": 4, "col": 6 }]
-    },
-    {
-      "level": 14,
-      "maze": [
-        [
-          { "walls": ["bottom", "right"] },
-          {},
-          { "walls": ["top"] },
-          {},
-          {},
-          {},
-          { "walls": ["left"] }
-        ],
-        [
-          {},
-          { "walls": ["top", "left"] },
-          { "walls": ["right"] },
-          {},
-          { "walls": ["bottom"] },
-          {},
-          {}
-        ],
-        [{}, {}, { "walls": ["bottom"] }, {}, { "walls": ["left"] }, {}, {}],
-        [
-          {},
-          { "walls": ["right"] },
-          {},
-          { "walls": ["top"] },
-          {},
-          {},
-          { "walls": ["left"] }
-        ],
-        [{}, {}, { "walls": ["right"] }, {}, { "walls": ["top"] }, {}, {}],
-        [
-          {},
-          {},
-          {},
-          { "walls": ["right"] },
-          {},
-          { "walls": ["top", "left"] },
-          {}
-        ],
-        [{}, {}, {}, {}, { "walls": ["top", "right"] }, {}, {}]
-      ],
-      "stairs": [{ "row": 6, "col": 0, "type": "S_l" }],
-      "player_start": { "row": 0, "col": 0 },
-      "mummies": [
-        { "row": 2, "col": 3, "color": "white" },
-        { "row": 4, "col": 2, "color": "red" },
-        { "row": 5, "col": 5, "color": "white" },
-        { "row": 3, "col": 4, "color": "red" },
-        { "row": 1, "col": 2, "color": "white" }
-      ],
-      "scorpions": [
-        { "row": 2, "col": 5, "color": "red" },
-        { "row": 4, "col": 3, "color": "white" }
-      ],
-      "traps": [
-        { "row": 3, "col": 3 },
-        { "row": 5, "col": 2 }
-      ],
-      "keys": [{ "row": 6, "col": 6 }]
+      "traps": [{"row": 0, "col": 4}]
     }
   ]
 }

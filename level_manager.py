@@ -29,10 +29,10 @@ class LevelManager:
                 data = json.load(file)
         except FileNotFoundError:
             print(f"Error: File '{LEVELS_PATH}' not found! Please ensure the file exists in the correct directory.")
-            return None, None, None, None, None, None, None
+            return None, None, None, None, None
         except json.JSONDecodeError:
             print(f"Error: File '{LEVELS_PATH}' contains invalid JSON format!")
-            return None, None, None, None, None, None, None
+            return None, None, None, None, None
 
         for level in data.get("levels", []):
             if level["level"] == level_number:
@@ -41,17 +41,15 @@ class LevelManager:
                     level["stairs"],
                     level.get("player_start", {"row": 0, "col": 0}),
                     level.get("mummies", []),
-                    level.get("scorpions", []),
-                    level.get("traps", []),
-                    level.get("keys", [])
+                    level.get("traps", [])
                 )
-        return None, None, None, None, None, None, None
+        return None, None, None, None, None
 
     def get_current_level_data(self):
         """Trả lại dữ liệu cho cấp độ hiện tại."""
         if 0 <= self.current_level < len(self.levels):
             return self.load_level(self.current_level + 1)
-        return None, None, None, None, None, None, None
+        return None, None, None, None, None
 
     def next_level(self):
         if self.current_level < len(self.levels) - 1:

@@ -1,2 +1,2 @@
 
-                    self.walls.add(Wall(x, y, "W_h"))
+        map_instance.draw()
