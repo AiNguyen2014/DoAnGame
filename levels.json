@@ -124,25 +124,6 @@
         {"row": 3, "col": 4},
         {"row": 4, "col": 3}
       ]
-    },
-    {
-      "level": 7,
-      "maze": [
-        [{}, {"walls": ["left"]}, {"walls": ["left", "bottom"]}, {}, {}, {}],
-        [{}, {"walls": ["left"]}, {"walls": ["right","bottom"]}, {}, {"walls": ["left"]}, {"walls": ["top"]}],
-        [{}, {"walls": ["left", "bottom"]}, {}, {}, {}, {"walls": ["left", "bottom"]}],
-        [{}, {}, {"walls": ["bottom"]}, {"walls": ["right"]}, {}, {"walls": ["left"]}],
-        [{}, {"walls": ["bottom"]}, {}, {"walls": ["bottom","right"]}, {}, {}],
-        [{}, {}, {}, {}, {}, {}]
-      ],
-      "stairs": [
-        {"row": 3, "col": 6, "type": "S_r"}
-      ],
-      "player_start": {"row": 2, "col": 2},
-      "mummies": [
-        {"row": 4, "col": 5, "color": "white"}
-      ],
-      "traps": [{"row": 0, "col": 4}]
     }
   ]
 }

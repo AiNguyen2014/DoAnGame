@@ -4,21 +4,21 @@ from constants import WIDTH
 class AlgorithmUI:
     def __init__(self, screen):
         self.screen = screen
-        # Thêm thuật toán local_search vào danh sách
-        self.algorithms = ["a_star", "q_learning", "min_conflict", "bfs", "local_search"]
+        # Thêm thuật toán local_beam vào danh sách
+        self.algorithms = ["a_star", "q_learning", "min_conflict", "bfs", "local_beam"]
         # Tên hiển thị cho người dùng
         self.algorithm_names = {
             "a_star": "A* Search",
             "q_learning": "Q-Learning",
             "min_conflict": "Min-Conflict",
             "bfs": "BFS",
-            "local_search": "Local Search"
+            "local_beam": "Local Beam Search"
         }
         self.selected_algorithm = "a_star"  # Mặc định là A*
         self.is_expanded = False
         self.button_rect = pygame.Rect(WIDTH - 150, 10, 140, 30)
         self.dropdown_rects = []
-        self.font = pygame.font.Font(None, 24)
+        self.font = pygame.font.Font(None, 20)
         self.update_dropdown_rects()
 
     def update_dropdown_rects(self):

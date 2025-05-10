@@ -325,33 +325,48 @@ class Player(Character):
 
         return path
 
-    def local_search(self, maze, start, goal, gate, stairs_positions, mummy_row, mummy_col):
-        def evaluate_position(pos, goal, mummy_pos):
-            goal_distance = self.manhattan_distance(pos[0], pos[1], goal[0], goal[1])
-            mummy_distance = self.manhattan_distance(pos[0], pos[1], mummy_row, mummy_col)
-            # Heuristic: minimize distance to goal, maximize distance from mummy
-            return goal_distance - 0.5 * mummy_distance
+    def local_beam_search(self, maze, start, goal, gate, stairs_positions, mummy_row, mummy_col, beam_width=3, max_depth=10):
+        def heuristic(pos, goal, mummy_pos):
+            goal_dist = self.manhattan_distance(pos[0], pos[1], goal[0], goal[1])
+            mummy_dist = self.manhattan_distance(pos[0], pos[1], mummy_row, mummy_col)
+            return -goal_dist + (50 if mummy_dist < 2 else 0)  # Penalize being too close to mummy
 
-        current = start
-        best_move = None
-        best_score = float('inf')
+        # State: (position, path_to_here, depth)
+        beam = [(heuristic(start, goal, (mummy_row, mummy_col)), start, [])]
+        visited = set()
 
-        for direction in ["up", "down", "left", "right"]:
-            next_row, next_col = current
-            if direction == "up": next_row -= 1
-            elif direction == "down": next_row += 1
-            elif direction == "left": next_col -= 1
-            elif direction == "right": next_col += 1
+        for depth in range(max_depth):
+            next_beam = []
+            for _, pos, path in beam:
+                if pos == goal:
+                    return path if path else []
 
-            next_pos = (next_row, next_col)
-            if self.eligible_move(maze, gate, next_row, next_col, is_player=True, stairs_positions=stairs_positions):
-                score = evaluate_position(next_pos, goal, (mummy_row, mummy_col))
-                if score < best_score:
-                    best_score = score
-                    best_move = (direction, next_row, next_col)
+                for direction in ["up", "down", "left", "right"]:
+                    next_row, next_col = pos
+                    if direction == "up": next_row -= 1
+                    elif direction == "down": next_row += 1
+                    elif direction == "left": next_col -= 1
+                    elif direction == "right": next_col += 1
 
-        if best_move:
-            return [start, best_move[1:]]  # Return path with start and next position
+                    next_pos = (next_row, next_col)
+                    if (next_pos not in visited and 
+                        self.eligible_move(maze, gate, next_row, next_col, is_player=True, stairs_positions=stairs_positions)):
+                        new_path = path + [(direction, next_row, next_col)]
+                        score = heuristic(next_pos, goal, (mummy_row, mummy_col))
+                        next_beam.append((score, next_pos, new_path))
+
+            # Sort by heuristic score and keep top beam_width states
+            next_beam.sort(key=lambda x: x[0])
+            beam = next_beam[:beam_width]
+            for _, pos, _ in beam:
+                visited.add(pos)
+
+            if not beam:
+                break
+
+        # If no path to goal, return the first move of the best path found
+        if beam:
+            return beam[0][2][0] if beam[0][2] else []
         return []
 
     def auto_move(self, maze, gate, mummy_row, mummy_col, stairs_positions, goal_row, goal_col):
@@ -414,19 +429,12 @@ class Player(Character):
                     self.add_to_move_queue(direction, next_pos[0], next_pos[1])
                     return True
 
-        elif self.algorithm == "local_search":
-            path = self.local_search(maze, (self.row, self.col), (goal_row, goal_col), gate, stairs_positions, mummy_row, mummy_col)
-            if path and len(path) > 1:
-                next_pos = path[1]
-                direction = None
-                if next_pos[0] < self.row: direction = "up"
-                elif next_pos[0] > self.row: direction = "down"
-                elif next_pos[1] < self.col: direction = "left"
-                elif next_pos[1] > self.col: direction = "right"
-                
-                if direction:
-                    self.add_to_move_queue(direction, next_pos[0], next_pos[1])
-                    return True
+        elif self.algorithm == "local_beam":
+            result = self.local_beam_search(maze, (self.row, self.col), (goal_row, goal_col), gate, stairs_positions, mummy_row, mummy_col)
+            if result:
+                direction, new_row, new_col = result
+                self.add_to_move_queue(direction, new_row, new_col)
+                return True
 
         return False
 
