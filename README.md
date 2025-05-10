@@ -1,5 +1,5 @@
 # ĐỒ ÁN CUỐI KÌ - AI MUMMY MAZE SOLVER
-trong đó người chơi phải điều hướng để thoát khỏi mê cung đầy xác ướp và bẫy. Trò chơi tích hợp các thuật toán tìm kiếm như Breadth-First Search (BFS), A*, Min-Conflict và Q-Learning để tự động tìm đường đi tối ưu
+trong đó người chơi phải điều hướng để thoát khỏi mê cung đầy xác ướp và bẫy. Trò chơi tích hợp các thuật toán tìm kiếm như Breadth-First Search (BFS), A*, Min-Conflict, Beam Search và Q-Learning để tự động tìm đường đi tối ưu
 # Mục lục
 1. Tổng quan
 2. Tính năng
@@ -19,7 +19,7 @@ Mummy Maze là một trò chơi giải đố kinh điển, trong đó người c
 
 # Tính năng
   * Chơi tương tác : Chơi thủ công bằng phím hoặc xem AI auto de mê cung.
-  * Nhiều thuật toán AI : BFS, A*, Min-Conflict và Q-Learning.
+  * Nhiều thuật toán AI : BFS, A*, Min-Conflict, Beam Search và Q-Learning.
   * So sánh hiệu suất : Đo số bước, số trạng thái đã truy cập và thời gian thực hiện.
   * Đồ họa giao diện : Sử dụng Pygame để hiển thị cung cấp và các nhân vật.
   * Quản lý cấp độ : Hỗ trợ nhiều cấp độ với độ khó tăng dần, được định nghĩa trong tệp JSON.
@@ -44,11 +44,11 @@ Mummy Maze là một trò chơi giải đố kinh điển, trong đó người c
   
 # Các thuật toán được triển khai
 
-  Breadth-First Search (BFS) : Khám phá tất cả các trạng thái theo từng lớp, đảm bảo đường đi ngắn nhất nhưng có thể tốn nhiều tài nguyên.
-  A *: Sử dụng heuristic (như khoảng cách Manhattan) để ưu tiên các trạng thái gần mục tiêu, cân bằng giữa hiệu quả và chất lượng đường đi.
-  Min-Conflict : Chọn các bước chuyển giảm xung đột với tường hoặc bẫy, phù hợp cho các mê cung đơn giản.
-  Q-Learning : Một thuật toán học tăng cường, học cách chọn hành động tối ưu thông qua thử và sai, thích hợp cho các vấn đề.
-
+  - Breadth-First Search (BFS) : Khám phá tất cả các trạng thái theo từng lớp, đảm bảo đường đi ngắn nhất nhưng có thể tốn nhiều tài nguyên.
+  - A *: Sử dụng heuristic (như khoảng cách Manhattan) để ưu tiên các trạng thái gần mục tiêu, cân bằng giữa hiệu quả và chất lượng đường đi.
+  - Min-Conflict : Chọn các bước chuyển giảm xung đột với tường hoặc bẫy, phù hợp cho các mê cung đơn giản.
+  - Q-Learning : Một thuật toán học tăng cường, học cách chọn hành động tối ưu thông qua thử và sai, thích hợp cho các vấn đề.
+  - Beam Search: 
 # Bắt đầu
 
 1. Sao chép kho lưu trữ:
@@ -86,7 +86,7 @@ Hỗ trợ lưu trò chơi tiến trình và tải lại.
     * Nhấn QUIT TO MAIN để quay lại menu chính.
 * Chơi tự động :
     * Từ menu chính, nhấn AUTO PLAY để kích hoạt AI chế độ.
-    * Chọn thuật toán (BFS, A*, Min-Conflict) bằng cách nhấp vào nút "Thuật toán" trong giao diện.
+    * Chọn thuật toán (BFS, A*, Min-Conflict,Beam Search và Q-Learning) bằng cách nhấp vào nút "Thuật toán" trong giao diện.
 * Mục tiêu :
     * Đưa người chơi đến cầu thang (cầu thang) để hoàn thành cấp độ.
     * Tránh va chạm xác hoặc rơi vào bẫy.
