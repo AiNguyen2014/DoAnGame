@@ -553,6 +553,64 @@ def find_least_dangerous_move(game, game_state):
 
     return None
 
+def search_no_observation(game, game_state):
+    """Search with No Observation algorithm implementation"""
+    start = game_state.player_pos
+    goals = game_state.goals
+    
+    # Initialize exploration grid
+    explored = set()
+    frontier = [(0, start, [])]  # (cost, position, path)
+    heapq.heapify(frontier)
+    
+    while frontier:
+        cost, current, path = heapq.heappop(frontier)
+        
+        if current in explored:
+            continue
+            
+        explored.add(current)
+        
+        # Check if goal reached
+        if current in goals:
+            return path[0] if path else None
+            
+        # Generate possible moves
+        directions = ["up", "down", "left", "right"]
+        for direction in directions:
+            new_row, new_col = current
+            if direction == "up": new_row -= 1
+            elif direction == "down": new_row += 1
+            elif direction == "left": new_col -= 1
+            elif direction == "right": new_col += 1
+            
+            new_pos = (new_row, new_col)
+            
+            if not is_valid_move(game, game_state, current[0], current[1], new_row, new_col):
+                continue
+                
+            # Calculate heuristic cost
+            min_goal_dist = min(manhattan_distance(new_row, new_col, g[0], g[1]) 
+                              for g in goals)
+            
+            # Calculate safety score
+            safety = 0
+            for mummy in game_state.mummies:
+                mummy_dist = manhattan_distance(new_row, new_col, mummy[0], mummy[1])
+                if mummy_dist <= 1:
+                    safety -= 1000
+                elif mummy_dist <= 2:
+                    safety -= 500
+                    
+            # Total cost combines distance and safety
+            new_cost = min_goal_dist - safety
+            
+            # Add to frontier
+            new_path = path + [direction] if path else [direction]
+            heapq.heappush(frontier, (new_cost, new_pos, new_path))
+    
+    return None
+
 def auto_play_step(game):
     """Thực hiện một bước tự động với logic từ auto_agent"""
     if not hasattr(game, 'blocked_positions'):
@@ -616,10 +674,18 @@ def auto_play_step(game):
     print(f"Level {game.level_manager.current_level + 1}, Situation: {situation}, Player at {current_pos}, Mummies at {mummy_positions}")
 
     next_move = None
-    if situation == "can_reach_goal_safely":
-        next_move = find_path_to_goal(game, game_state)
+    if hasattr(game.player, 'current_algorithm') and game.player.current_algorithm == "search_no_observation":
+        next_move = search_no_observation(game, game_state)
     else:
-        next_move = find_safest_path(game, game_state)
+        if situation == "can_reach_goal_safely":
+            next_move = find_path_to_goal(game, game_state)
+        else:
+            next_move = search_no_observation(game, game_state)
+            if not next_move:
+                next_move = find_safest_path(game, game_state)
+
+    if game.player.current_algorithm == "search_no_observation":
+        next_move = search_no_observation(game, game_state)
 
     if next_move:
         print(f"Attempting move: {next_move}")

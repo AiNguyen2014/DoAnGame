@@ -212,6 +212,7 @@ class Player(Character):
         self.learning_rate = 0.1
         self.discount_factor = 0.9
         self.epsilon = 0.1  # For exploration
+        self.current_algorithm = "a_star"  # Default algorithm
 
     def manhattan_distance(self, row1, col1, row2, col2):
         return abs(row1 - row2) + abs(col1 - col2)
@@ -442,6 +443,12 @@ class Player(Character):
         self.algorithm = algorithm
         if algorithm == "q_learning":
             self.q_table = {}  # Reset Q-table when switching to Q-learning
+
+    def set_algorithm(self, algorithm_name):
+        self.current_algorithm = algorithm_name
+        if algorithm_name == "search_no_observation":
+            from agent import search_no_observation
+            self.pathfinding_func = search_no_observation
 
     def move(self, direction, maze, gate, stairs_positions):
         if self.moving:
